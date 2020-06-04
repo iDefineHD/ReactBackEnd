@@ -3,14 +3,15 @@ const router = express.Router()
 const { check, validationResult } = require('express-validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const auth = require('../middleware/auth')
 
 const User = require('../models/User')
 
-//@route GET api/Auth
-//@desc get Logged In User
-//@access Private
+//@route POST api/Auth
+//@desc Auth User & Get Token
+//@access Public
 
-router.get(
+router.post(
 	'/',
 	[
 		check('email', 'Please include a valid email').isEmail(),
@@ -61,12 +62,18 @@ router.get(
 	},
 )
 
-//@route POST api/Auth
-//@desc Auth User & Get Token
-//@access Public
+//@route GET api/Auth
+//@desc get Logged In User
+//@access Private
 
-router.post('/', (req, res) => {
-	res.send('Register a User')
+router.get('/', auth, async (req, res) => {
+	try {
+		const user = await User.findById(req.user.id).select('-password')
+		res.json(user)
+	} catch (err) {
+		console.log(err)
+		return res.status(500).json({ msg: 'Server Error' })
+	}
 })
 
 module.exports = router
