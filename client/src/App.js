@@ -9,9 +9,9 @@ import ContactState from './context/contact/ContactState'
 
 const App = () => {
   return (
-   <ContactState>
+  <ContactState>
       <Router>
-       <Fragment>
+      <Fragment>
       <Navbar/>
         <div className="container">
           <Switch>
@@ -21,7 +21,7 @@ const App = () => {
         </div>
       </Fragment>
     </Router>
-   </ContactState>
+  </ContactState>
   );
 }
 
