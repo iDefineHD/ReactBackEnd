@@ -118,7 +118,8 @@ const ContactState = (props) => {
 				setCurrent,
 				clearCurrent,
 				updateContact,
-				filterContact
+				filterContact,
+				clearFilter
 			}}>
 			{props.children}
 		</ContactContext.Provider>
