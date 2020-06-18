@@ -8,9 +8,7 @@ import {
 } from '../types'
 
 const AlertState = (props) => {
-	const initialState = {
-       
-	}
+	const initialState = []
 
 	const [ state, dispatch ] = useReducer(alertReducer, initialState)
 
