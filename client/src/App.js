@@ -6,6 +6,7 @@ import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import Alerts from './components/layout/Alerts'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import PrivateRoute from './components/routing/PrivateRoute'
 import './App.css';
 
 import ContactState from './context/contact/ContactState'
@@ -28,7 +29,7 @@ const App = () => {
                 <Alerts/>
                 <Switch>
 
-                    <Route exact path="/" component={Home}></Route>
+                    <PrivateRoute exact path="/" component={Home}></PrivateRoute>
                     <Route exact path="/about" component={About}></Route>
                     <Route exact path="/register" component={Register}></Route>
                     <Route exact path="/login" component={Login}></Route>

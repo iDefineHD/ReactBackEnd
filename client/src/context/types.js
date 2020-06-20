@@ -5,6 +5,7 @@ export const CLEAR_CURRENT = 'CLEAR_CURRENT';
 export const UPDATE_CURRENT = 'UPDATE_CURRENT';
 export const FILTER_CURRENT = 'FILTER_CURRENT';
 export const CLEAR_FILTER = 'CLEAR_FILTER';
+export const CONTACT_ERROR = 'CONTACT_ERROR';
 export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
