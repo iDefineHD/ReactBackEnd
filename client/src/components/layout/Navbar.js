@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import AuthContext from '../../context/auth/authContext'
 
  const Navbar = ({title, icon}) => {
+
+    const authContext = useContext(AuthContext)
+
+    const {user} = authContext
     return (
         <div className="navbar bg-primary">
+            {user === null ? '' :  <h3> Logged In As: {user.name}</h3>}
             <h1 className={icon}> {title}</h1>
             <ul>
                 <li>
