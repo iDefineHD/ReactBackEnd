@@ -9,6 +9,10 @@ import {
 
 const AlertState = (props) => {
 	const initialState = []
+<<<<<<< HEAD
+=======
+
+>>>>>>> 44165d7b97e03aaba8586f29ecb7dae39492bfd3
 	const [ state, dispatch ] = useReducer(alertReducer, initialState)
 
     // Set Alert
