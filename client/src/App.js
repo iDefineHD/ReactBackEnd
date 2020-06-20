@@ -15,8 +15,8 @@ import AlertState from './context/alert/AlertState'
 const App = () => {
   return (
  <AuthState>
-   <AlertState>
     <ContactState>
+      <AlertState>
         <Router>
           <Fragment>
               <Navbar/>
@@ -32,8 +32,8 @@ const App = () => {
               </div>
           </Fragment>
         </Router>
+      </AlertState>
     </ContactState>
-   </AlertState>
 </AuthState>
   );
 }
