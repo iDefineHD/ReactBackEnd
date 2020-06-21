@@ -11,7 +11,7 @@ db();
 app.use(express.json({ extended: false }))
 
 app.get('/', (req, res)=> {
-    res.json({Your:"Nigga"})
+    res.json({Your:"#blacklivesmatter"})
 })
 
 //Define Routes
