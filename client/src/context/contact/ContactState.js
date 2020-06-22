@@ -3,6 +3,8 @@ import axios from 'axios'
 import ContactContext from './contactContext'
 import contactReducer from './contactReducer'
 import {
+	GET_CONTACTS,
+	CLEAR_CONTACTS,
 	ADD_CONTACT,
 	DELETE_CONTACT,
 	SET_CURRENT,
@@ -15,15 +17,30 @@ import {
 
 const ContactState = (props) => {
 	const initialState = {
-		contacts: [
-	
-		],
+		contacts: null,
 		current: null,
 		filtered: null,
 		error: null
 	}
 
 	const [ state, dispatch ] = useReducer(contactReducer, initialState)
+
+	//Get Contacts
+
+	const getContacts = async () => {
+		try {
+			const res = await axios.get('/api/contacts')
+			dispatch({
+				type: GET_CONTACTS,
+				payload: res.data
+			})
+		} catch (err) {
+			dispatch({
+				type: CONTACT_ERROR,
+				payload: err.response.msg
+			})
+		}
+	}
 
 	// Add Contact
 
@@ -50,11 +67,44 @@ const ContactState = (props) => {
 
 	// Delete Contact
 
-	const deleteContact = id => {
-		dispatch({
-			type: DELETE_CONTACT,
-			payload: id
-		})
+	const deleteContact = async id => {
+
+		try {
+			await axios.delete(`/api/contacts/${id}`)
+			dispatch({
+				type: DELETE_CONTACT,
+				payload: id
+			})
+		} catch (err) {
+			dispatch({
+				type: CONTACT_ERROR,
+				payload: err.response.msg
+			})
+		}
+	}
+
+	//Update Current Contact
+
+	const updateContact = async contact => {
+		const config = {
+			headers: {
+				'content-type':'application/json'
+			}
+		}
+
+		try {
+			const res = await axios.put(`/api/contacts/${contact._id}`, contact, config)
+			dispatch({
+				type: UPDATE_CURRENT,
+				payload: res.data
+			})
+		} catch (error) {
+			// dispatch({
+			// 	type: CONTACT_ERROR,
+			// 	payload: error.response.msg
+			// })
+			console.log(error)
+		}
 	}
 
 	//Set Current Contact
@@ -71,16 +121,6 @@ const ContactState = (props) => {
 	const clearCurrent = contact => {
 		dispatch({
 			type: CLEAR_CURRENT,
-			payload: contact
-		})
-	}
-
-
-	//Update Current Contact
-
-	const updateContact = contact => {
-		dispatch({
-			type: UPDATE_CURRENT,
 			payload: contact
 		})
 	}
@@ -102,6 +142,14 @@ const ContactState = (props) => {
 		})
 	}
 
+	//Clear Contacts
+
+	const clearContacts = () => {
+		dispatch({
+			type: CLEAR_CONTACTS
+		})
+	}
+
 	return (
 		<ContactContext.Provider
 			value={{
@@ -115,7 +163,9 @@ const ContactState = (props) => {
 				clearCurrent,
 				updateContact,
 				filterContact,
-				clearFilter
+				clearFilter,
+				getContacts,
+				clearContacts
 			}}>
 			{props.children}
 		</ContactContext.Provider>
