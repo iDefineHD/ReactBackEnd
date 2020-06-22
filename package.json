@@ -8,7 +8,7 @@
 		"client": "yarn --cwd client start",
 		"clientinstall": "yarn install --prefix client",
 		"both": "concurrently \"yarn run server\" \"yarn run client\"",
-		"heroku-postbuild":"YARN_CONFIG_PRODUCTION=false yarn install --prefix client && yarn run build --prefix client"
+		"heroku-postbuild":"YARN_CONFIG_PRODUCTION=false yarn install --prefix client && yarn run --cwd client build"
 	},
 	"author": "Ashley Bridges",
 	"license": "MIT",
