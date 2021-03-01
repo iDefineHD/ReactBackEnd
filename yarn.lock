@@ -285,10 +285,10 @@ concurrently@5.3.0:
     tree-kill "^1.2.2"
     yargs "^13.3.0"
 
-config@^3.3.2:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/config/-/config-3.3.2.tgz#35be3846054340f0f79778b2445afffbc11867c7"
-  integrity sha512-NlGfBn2565YA44Irn7GV5KHlIGC3KJbf0062/zW5ddP9VXIuRj0m7HVyFAWvMZvaHPEglyGfwmevGz3KosIpCg==
+config@^3.3.4:
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/config/-/config-3.3.4.tgz#55811abc2752b38a7b806cbdbc2da79c428312b7"
+  integrity sha512-URO0m6z+rtENGHqtzO7W7C35iF+H9KVe7JJFps+3TIqZEOHl83NqTAgp5h8ah96m4NPQnx08nPBfbtDU+PgjVA==
   dependencies:
     json5 "^2.1.1"
 
